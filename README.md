@@ -13,7 +13,10 @@ Repository of clojure book code, sample code, exercise code and other codz.
 - [ ] Book: Programming Clojure, Third Edition
     - [*] Introduction
     - [*] 1. Getting Started
-    - [ ] 2. Exploring Clojure
+    - [/] 2. Exploring Clojure
+        - [*] Reading Clojure
+        - [*] Functions
+        - [*] Vars, Bindings, and Namespaces
     - [ ] 3. Unifying Data with Sequences
     - [ ] 4. ​Functional Programming
     - [ ] 5. Specifications​
