@@ -107,3 +107,95 @@
 (resolve 'ellipsize)
 (def wolf 100)
 (resolve 'adam)
+
+;; Metadata
+
+(defn ^{:tag String} shout [^{:tag String} s] (clojure.string/upper-case s))
+
+(defn ^String shout-loud [^String s] (clojure.string/upper-case s))
+
+;; Calling Java
+
+(new java.util.Random)
+
+(java.util.Random.)
+
+(def rnd (new java.util.Random))
+
+(. rnd nextInt)
+
+(. rnd nextInt 10)
+
+(def p (java.awt.Point. 10 20))
+(. p x)
+
+(. System lineSeparator)
+
+(. Math PI)
+
+;; a more concise syntax
+
+(.nextInt rnd 10)
+
+(.x p)
+
+(System/lineSeparator)
+
+(javadoc java.net.URL)
+
+;; Comments
+
+;; this is a comment
+
+(comment
+  (defn ignore-me []
+  ;; not done yet
+))
+
+(defn triple [number]
+  #_(println "debug triple" number)
+  (* 3 number))
+
+(triple 11)
+
+;; Flow Control
+
+(defn is-small? [number]
+  (if (< number 100) "yes"))
+
+(defn is-small2? [number]
+  (if (< number 100) "yes" "no"))
+
+(defn is-small3? [number]
+  (if (< number 100)
+    "yes"
+    (do
+      (println "Saw a big number " number)
+      "no")))
+
+;; Recure with Loop/Recur
+
+(loop [result [] x 5]
+  (if (zero? x)
+    result
+    (recur (conj result x) (dec x))))
+
+(defn countdown [result x]
+  (if (zero? x)
+    result
+    (recur (conj result x) (dec x))))
+
+;; Where's my for loop?
+
+(defn indexed [coll] (map-indexed vector coll))
+
+(defn index-filter [pred coll]
+  (when pred
+    (for [[idx elt] (indexed coll) :when (pred elt)] idx)))
+
+(index-filter #{\a \b} "abcdbbb")
+
+(defn index-of-any [pred coll]
+  (first (index-filter pred coll)))
+
+(index-of-any #{\a \b} "zabcdbbb")
