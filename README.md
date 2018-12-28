@@ -31,13 +31,11 @@ Repository of clojure book code, sample code, exercise code and other codz.
 ## Cheat Sheet
 
 To connect to nrepl inside vscode 
-
 ```
 lein repl :connect 51381
 ```
 
 Send Clojure expressions to repl from VS Code
-
 ```
 shift + command + e
 ```
