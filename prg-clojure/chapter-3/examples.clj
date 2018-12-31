@@ -151,3 +151,88 @@
 
 ;; Lazy and Infinite Sequences
 
+(def x (for [i (range 1 3)] (do (println i) i)))
+
+(doall x)
+(dorun x)
+
+;; Clojure Makes Java Seq-able
+
+(first (.getBytes "hello"))
+
+(rest (.getBytes "hello"))
+
+(cons (int \h) (.getBytes "ello"))
+
+(first (System/getProperties))
+
+(rest (System/getProperties))
+
+(reverse "hello")
+
+(apply str (reverse "hello"))
+
+;; Seq-ing Regular Expressions
+
+(re-seq #"\w+ " "the quick brown fox")
+(sort (re-seq #"\w+" "the quick brown fox"))
+(drop 2 (re-seq #"\w+" "the quick brown fox"))
+(map clojure.string/upper-case (re-seq #"\w+" "the quick brown fox"))
+
+(def f (clojure.java.io/file "."))
+
+(def fs (file-seq f))
+
+(take 10 fs)
+
+(clojure.pprint/pprint (take 10 fs))
+;; Seq-ing a stream
+
+(with-open [rdr (reader "./brave-clojure/time-lib/src/hello_time.clj")] ;; primes.clj
+  (count (line-seq rdr)))
+
+;; Calling Structure Specific Functions
+
+(peek '(1 2 3))
+
+(pop '(1 2 3))
+
+;; Functions on Vectors
+
+(peek [1 2 3])
+(pop [1 2 3])
+
+(get [:a :b :c] 1)
+(get [:a :b :c] 5)
+
+([:a :b :c] 1)
+;; ([:a :b :c] 5) -> java.lang.IndexOutOfBoundsException
+
+(assoc [0 1 2 3 4] 2 :two)
+(subvec [1 2 3 4 5] 3)
+
+;; Functions on Maps
+
+(keys {:sundance "spaniel" :darwin "beagle"})
+(vals {:sundance "spaniel" :darwin "beagle"})
+
+(get {:sundance "spaniel" :darwin "beagle"} :darwin)
+(get {:sundance "spaniel" :darwin "beagle"} :darwin2)
+
+({:sundance "spaniel" :darwin "beagle"} :darwin)
+(:darwin {:sundance "spaniel" :darwin "beagle"})
+(contains? {:sundance "spaniel" :darwin "beagle"} :darwin2)
+
+(get {:sundance "spaniel" :darwin "beagle"} :darwin2 :not-found)
+
+;; Functions on Sets
+
+(require '[clojure.set :refer :all])
+
+(def languages #{"java" "c" "d" "clojure"})
+(def beverages #{"java" "chia" "pop"})
+
+(union languages beverages)
+(clojure.set/difference languages)
+(clojure.set/intersection languages beverages)
+(clojure.set/select #(= 1 (count %)) languages)
