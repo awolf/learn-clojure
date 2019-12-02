@@ -103,10 +103,10 @@
 
 (resolve 'ellipsize)
 
-(in-ns 'myapp)
-(resolve 'ellipsize)
+;;(in-ns 'myapp)
+;;(resolve 'ellipsize)
 (def wolf 100)
-(resolve 'adam)
+;;(resolve 'adam)
 
 ;; Metadata
 
@@ -199,3 +199,5 @@
   (first (index-filter pred coll)))
 
 (index-of-any #{\a \b} "zabcdbbb")
+
+
