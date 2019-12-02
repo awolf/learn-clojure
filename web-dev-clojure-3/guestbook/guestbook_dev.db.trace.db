@@ -1,0 +1,8 @@
+2019-12-02 16:47:07 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Table "SCHEMA_MIGRATIONS" not found; SQL statement:
+SELECT 1 FROM schema_migrations [42102-197]
+2019-12-02 16:55:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "(NAME[*], MESSAGE)
+VALUES (?, ?) "; expected "(, WITH, SELECT, FROM"; SQL statement:
+(name, message)
+VALUES (?, ?) [42001-197]
